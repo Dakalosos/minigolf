@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3e9">
+  <title>Tak co ten minigolf?</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { background: #f6f3e9; color: #214d3d; }
+    main { min-height: 100svh; overflow: hidden; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 65px 24px 28px; }
+    main::after { content: ''; position: absolute; inset: 18px; border: 1px solid #214d3d20; border-radius: 10px; pointer-events: none; }
+    .sun { position: absolute; width: 110px; height: 110px; border-radius: 50%; background: #ebbd6550; top: 12%; right: 12%; }
+    h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: clamp(64px, 8.4vw, 122px); line-height: .98; letter-spacing: -.065em; text-align: center; margin: 0; z-index: 1; animation: appear 1s ease-out both; }
+    h1 span { display: block; }
+    h1 em { color: #d96c42; font-weight: 400; }
+    .course { width: min(680px, 90vw); height: auto; overflow: visible; margin-top: -2px; animation: appear 1.2s .1s ease-out both; }
+    .flag { transform-origin: 404px 137px; animation: flutter 4s ease-in-out infinite; }
+    .ball { animation: roll 3s .5s cubic-bezier(.2,.7,.3,1) both; }
+    @keyframes appear { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes flutter { 50% { transform: skewY(5deg); } }
+    @keyframes roll { from { transform: translate(-110px, 65px); } to { transform: translate(0,0); } }
+    @media (max-width: 600px) { main { padding-top: 90px; } h1 { font-size: clamp(60px, 13vw, 82px); } .course { width: 115vw; margin-top: 36px; flex-shrink: 0; } .sun { width: 65px; height: 65px; top: 9%; right: 12%; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="sun" aria-hidden="true"></div>
+    <h1><span>Tak co ten</span> <em>minigolf?</em></h1>
+    <svg class="course" viewBox="0 0 680 390" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="grass" x1="200" y1="170" x2="470" y2="355" gradientUnits="userSpaceOnUse"><stop stop-color="#91af70"/><stop offset="1" stop-color="#6d945a"/></linearGradient>
+        <radialGradient id="ball"><stop offset="0" stop-color="#fff"/><stop offset=".7" stop-color="#faf9ef"/><stop offset="1" stop-color="#d8dace"/></radialGradient>
+        <filter id="shadow" x="-30%" y="-50%" width="160%" height="200%"><feGaussianBlur stdDeviation="11"/></filter>
+      </defs>
+      <ellipse cx="337" cy="318" rx="205" ry="33" fill="#244c3c" opacity=".10" filter="url(#shadow)"/>
+      <path d="M161 228 342 137Q385 116 432 140L523 186Q566 207 538 238L347 335Q307 355 263 334L161 282Q120 261 161 228Z" fill="#254f3d"/>
+      <path d="M161 214 342 123Q385 102 432 126L523 172Q566 193 538 224L347 321Q307 341 263 320L161 268Q120 247 161 214Z" fill="#e2d5b1"/>
+      <path d="M172 219 347 132Q385 113 426 134L514 179Q550 197 526 217L342 310Q307 329 270 310L170 260Q138 244 172 219Z" fill="url(#grass)"/>
+      <path d="m183 231 179-88q26-13 53 0l91 46q19 10 7 20L333 300q-26 13-51 0l-99-50q-17-9 0-19Z" stroke="#c3d5a0" stroke-opacity=".35"/>
+      <path d="m213 254 169-85M255 275l168-85M299 295l167-84" stroke="#fff" stroke-opacity=".055" stroke-width="23"/>
+      <ellipse cx="404" cy="201" rx="17" ry="8" fill="#4e7849" opacity=".5"/>
+      <ellipse cx="404" cy="198" rx="13" ry="6" fill="#203e30"/>
+      <path d="m405 197 51 13" stroke="#284d35" stroke-opacity=".15" stroke-width="4" stroke-linecap="round"/>
+      <path d="M404 197V72" stroke="#f8f1d9" stroke-width="4" stroke-linecap="round"/>
+      <path class="flag" d="M406 73c18-11 32 17 57 5v39c-25 12-39-16-57-5Z" fill="#db7047"/>
+      <path d="M407 74v36" stroke="#c55c38" stroke-width="2"/>
+      <path d="M283 265Q303 240 355 221" stroke="#f4edd3" stroke-opacity=".75" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+      <g class="ball"><ellipse cx="279" cy="271" rx="10" ry="4" fill="#355b3a" opacity=".25"/><circle cx="277" cy="263" r="9" fill="url(#ball)"/><g fill="#b9c2ae" opacity=".55"><circle cx="274" cy="266" r=".8"/><circle cx="279" cy="268" r=".8"/><circle cx="281" cy="263" r=".8"/><circle cx="277" cy="262" r=".8"/></g></g>
+      <g stroke="#66865a" stroke-width="2" stroke-linecap="round"><path d="m137 301-3-10m3 10 4-7m-4 7-8-4M536 278l2-12m-2 12-5-8m5 8 7-5M204 174l-3-9m3 9 4-7"/></g>
+      <g fill="#e4d8b9"><ellipse cx="487" cy="298" rx="9" ry="5" transform="rotate(-22 487 298)"/><ellipse cx="194" cy="307" rx="6" ry="4"/></g>
+    </svg>
+  </main>
+</body>
+</html>
